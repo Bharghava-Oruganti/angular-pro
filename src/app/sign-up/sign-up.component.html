@@ -1,0 +1,84 @@
+ <div class = "formComponent">     
+      <mat-card>
+       <mat-tab-group>
+              <mat-tab label = "Login">
+                            <form class="login-form" *ngIf='auth' (submit)="login()">
+                                   <div [formGroup]="lform">
+                                          <mat-form-field appearance="outline">
+                                                 <mat-label>Username</mat-label>
+                                                 <input matInput type="text" 
+                                                        placeholder="Username"                                     
+                                                        formControlName="userName"  
+                                                        required />
+                                                 <mat-error *ngIf = "lform.touched 
+                                                        && lform.get('userName').value.length ==0">
+                                                        Username Required
+                                                 </mat-error>
+                                                 <mat-error *ngIf = "lform.get('userName').value.length < 4 
+                                                               && lform.get('userName').value.length>0">
+                                                               Username too short
+                                                 </mat-error>
+                                          </mat-form-field>
+                                          <br>
+                                          <mat-form-field appearance="outline">
+                                                 <mat-label>Password</mat-label>
+                                                 <input matInput type="password"
+                                                        placeholder="Password"                                      
+                                                        formControlName="password"
+                                                        required 
+                                                        />
+                                          
+                                                 <!-- Add validation for password field -->
+                                          </mat-form-field>
+                                   </div>
+                                   <br>
+                                   <button mat-raised-button color="primary"> LOGIN </button>
+
+                            </form>
+                                   
+                     
+                            
+                            <h1 *ngIf="!auth">Welcome {{username}}</h1>
+              
+
+              </mat-tab>
+
+                            <mat-tab label = "Sign-up">
+                                   <form class="signup-form">
+                                          <div [formGroup] = "sform">
+                                                 <mat-form-field appearance="outline">
+                                                        <mat-label>Username</mat-label>
+                                                        <input matInput type="text" 
+                                                               placeholder="Username"
+                                                               formControlName = "newUserName"
+                                                               required />
+                                                 
+                                                        <mat-error *ngIf="isExists">Username Exists</mat-error>
+                                                 
+                                                 </mat-form-field>
+                                                 <br>
+                                                 <mat-form-field appearance="outline">
+                                                        <mat-label>Password</mat-label>
+                                                        <input matInput type="password"
+                                                               placeholder="Enter a strong Password"
+                                                               formControlName = "newUserPassword" />
+                                                 </mat-form-field>
+                                                 <br>
+                                                 <mat-form-field appearance="outline">
+                                                        <mat-label>Confirm Password</mat-label>
+                                                        <input matInput type="password" 
+                                                               placeholder="Confirm Password"
+                                                               formControlName = "newCUserPassword" />
+                                                 </mat-form-field>
+                                          </div>
+                                          
+                                          <br>
+                                          <button mat-raised-button color="primary" (click)="signup()"> SIGN-UP </button>
+                                   </form>
+                            </mat-tab>
+
+
+       </mat-tab-group>
+      </mat-card>
+</div>
+

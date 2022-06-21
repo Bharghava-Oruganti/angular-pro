@@ -1,0 +1,8 @@
+.login {
+    box-shadow: 5px 5px 5px rgba(5);
+    border-color: red;
+}
+
+.login-form input {
+    display: block;
+}
